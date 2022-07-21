@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <div>Danh sach hoc sinh</div>
+      <div>Danh sách học sinh</div>
       <table>
         <tbody>
           <tr>
@@ -49,7 +49,7 @@ export default function App() {
                 <th>{item.address}</th>
                 <th>
                   <button onClick={deleteStudent} value={item.id}>
-                    delete
+                 Xóa
                   </button>
                 </th>
               </tr>

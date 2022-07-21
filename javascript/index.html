@@ -6,7 +6,7 @@
   </head>
 
   <body>
-    <div id="app">danh sach hoc sinh</div>
+    <div id="app">Danh sách học sinh</div>
     <table class="table">
       <tbody></tbody>
     </table>
@@ -97,7 +97,7 @@
       }, {});
       let Html = '';
       for (let key in countDict) {
-        Html += `<div> co ${countDict[key]} hoc sinh ${key} </div>`;
+        Html += `<div> Có ${countDict[key]} học sinh ${key} tuổi</div>`;
         document.querySelector('.wrapper').innerHTML = Html;
       }
     </script>
