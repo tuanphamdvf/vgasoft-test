@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="app">danh sach hoc sinh</div>
+    <table class="table">
+      <tbody></tbody>
+    </table>
+    <div class="wrapper">
+      <div class="div"></div>
+    </div>
+
+    <script>
+      var data_student = [
+        {
+          id: 1,
+          name: 'Nguyễn văn A',
+          age: 15,
+          address: 'Hà nội',
+          schoolId: 2,
+        },
+        {
+          id: 2,
+          name: 'Nguyễn văn B',
+          age: 16,
+          address: 'Nam định',
+          schoolId: 3,
+        },
+        {
+          id: 3,
+          name: 'Nguyễn văn C',
+          age: 16,
+          address: 'Vĩnh phúc',
+          schoolId: 1,
+        },
+        {
+          id: 4,
+          name: 'Nguyễn văn D',
+          age: 13,
+          address: 'Hà nội',
+          schoolId: 2,
+        },
+        {
+          id: 5,
+          name: 'Nguyễn văn E',
+          age: 15,
+          address: 'Hòa Bình',
+          schoolId: 2,
+        },
+      ];
+      var data_school = [
+        {
+          id: 1,
+          name: 'THPT Lê Hồng Phong',
+        },
+        {
+          id: 2,
+          name: 'THPT Phan Bội Châu',
+        },
+        {
+          id: 3,
+          name: 'THPT Hà nội',
+        },
+      ];
+
+      // Câu 1: In ra danh sách các học sinh dưới dạng bảng (có tên các trường theo học, dựa trên mảng data_shool)
+      // Câu 2: In ra thống kê số lượng học sinh ở các độ tuổi (vd: 2 hs tuổi 13, 5 hs tuổi 14)
+      function render(data_student) {
+        const newArray = data_student.map((item) => {
+          const newData = data_school.map((data) => {
+            if (data.id === item.schoolId) {
+              return (schoolName = data.name);
+            }
+          });
+
+          return `<tr key={item.id}>
+                <th>${item.id}</th>
+                <th>${item.name}</th>
+                <th>${item.age}</th>
+                <th>${item.address}</th>
+                <th>${schoolName}</th>
+                <th>`;
+        });
+
+        const tableStudent = (document.querySelector('.table').innerHTML = newArray);
+      }
+      render(data_student);
+      const countDict = data_student.reduce((acc, curr) => {
+        const { age } = curr;
+        if (acc[age]) ++acc[age];
+        else acc[age] = 1;
+        return acc;
+      }, {});
+      let Html = '';
+      for (let key in countDict) {
+        Html += `<div> co ${countDict[key]} hoc sinh ${key} </div>`;
+        document.querySelector('.wrapper').innerHTML = Html;
+      }
+    </script>
+  </body>
+</html>
